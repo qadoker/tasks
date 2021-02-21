@@ -12,7 +12,7 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
 
-  Future<List<Task>> _getUsers() async{
+  Future<List<Task>> _getTasks() async{
     var data = await http.get('https://cdn.fonibo.com/challenges/tasks.json');
     if(data.statusCode==200) {
       var jsonData = json.decode(data.body);
@@ -75,7 +75,7 @@ class _TasksScreenState extends State<TasksScreen> {
               Text('Tasks', style: TextStyle(fontSize: 18.0)),
               SizedBox(height: 15.0),
               FutureBuilder(
-                future: _getUsers(),
+                future: _getTasks(),
                 builder: (BuildContext context, AsyncSnapshot snapshot){
                   if (snapshot.data==null){
                     return Container(
